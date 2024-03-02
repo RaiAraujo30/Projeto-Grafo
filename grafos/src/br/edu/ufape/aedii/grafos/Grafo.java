@@ -8,9 +8,9 @@ public interface Grafo {
 
 	int getIndiceVertice(String v);
 
-	void adicionarAresta(String v1, String v2);
+	void adicionarAresta(int v1, int v2, int peso);
 
-	void adicionarAresta(int v1, int v2);
+	void adicionarAresta(String v1, String v2, int peso);
 
 	void imprimirMapa();
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class GrafoAdjacencia implements Grafo{
     
-    private List<List<Integer>> listaAdjacencias;
+    private List<List<ArestaPonderada>> listaAdjacencias;
     private List<String> mapa;
 	private int numeroVertices;
 
@@ -33,15 +33,15 @@ public class GrafoAdjacencia implements Grafo{
 		return this.mapa.indexOf(v);
 	}
 	
-	@Override
-	public void adicionarAresta(String v1, String v2) {
-		this.adicionarAresta(getIndiceVertice(v1), getIndiceVertice(v2));
-	}
+    @Override
+    public void adicionarAresta(String v1, String v2, int peso) {
+        this.adicionarAresta(getIndiceVertice(v1), getIndiceVertice(v2), peso);
+    }
 	
 	@Override
-	public void adicionarAresta(int v1, int v2) {
-		this.listaAdjacencias.get(v1).add(v2);
-		this.listaAdjacencias.get(v2).add(v1);
+	public void adicionarAresta(int v1, int v2, int peso) {
+		this.listaAdjacencias.get(v1).add(new ArestaPonderada(v1, v2, peso ));
+		this.listaAdjacencias.get(v2).add(new ArestaPonderada(v2, v1, peso));
 	}
 	
 	@Override
@@ -52,7 +52,11 @@ public class GrafoAdjacencia implements Grafo{
 
     @Override
     public List<Integer> listarAdjacencias(int v) {
-        return this.listaAdjacencias.get(v);
+        List<Integer> adjacentes = new ArrayList<>();
+        for (ArestaPonderada aresta : this.listaAdjacencias.get(v)) {
+            adjacentes.add(aresta.getDestino());
+        }
+        return adjacentes;
     }
 
     
@@ -61,11 +65,12 @@ public class GrafoAdjacencia implements Grafo{
     public void imprimir() {
         for (int i = 0; i < this.numeroVertices; i++) {
             System.out.print("Adjacências do vértice " + i + ": ");
-            List<Integer> adjacentes = this.listaAdjacencias.get(i);
+            List<ArestaPonderada> arestas = this.listaAdjacencias.get(i);
 
-            for (int j = 0; j < adjacentes.size(); j++) {
-                System.out.print(adjacentes.get(j));
-                if (j < adjacentes.size() - 1) {
+            for (int j = 0; j < arestas.size(); j++) {
+                ArestaPonderada aresta = arestas.get(j);
+                System.out.print("(" + aresta.getDestino() + ", Peso: " + aresta.getPeso() + ")");
+                if (j < arestas.size() - 1) {
                     System.out.print(", ");
                 }
             }
@@ -79,11 +84,11 @@ public class GrafoAdjacencia implements Grafo{
 		return numeroVertices;
 	}
 
-    public List<List<Integer>> getListaAdjacencias() {
+    public List<List<ArestaPonderada>> getListaAdjacencias() {
         return listaAdjacencias;
     }
 
-    public void setListaAdjacencias(List<List<Integer>> listaAdjacencias) {
+    public void setListaAdjacencias(List<List<ArestaPonderada>> listaAdjacencias) {
         this.listaAdjacencias = listaAdjacencias;
     }
 
