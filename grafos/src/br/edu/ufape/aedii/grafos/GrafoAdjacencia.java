@@ -40,7 +40,7 @@ public class GrafoAdjacencia implements Grafo{
 	
 	@Override
 	public void adicionarAresta(int v1, int v2, int peso) {
-		this.listaAdjacencias.get(v1).add(new ArestaPonderada(v1, v2, peso ));
+		this.listaAdjacencias.get(v1).add(new ArestaPonderada(v1, v2, peso));
 		this.listaAdjacencias.get(v2).add(new ArestaPonderada(v2, v1, peso));
 	}
 	
