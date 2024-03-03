@@ -51,34 +51,8 @@ public class Dijkstra {
         for (int vertice : caminho) {
             System.out.print(grafo.getMapa().get(vertice) + " ");
         }
-        System.out.println("\nDistância mínima: " + distancia[destino]);
+        System.out.println("\nDistância mínima: " + distancia[destino] + " metros");
 
         return caminho;
     }
-
-    // public static void main(String[] args) {
-    //     // Exemplo de uso
-    //     GrafoAdjacencia grafo = new GrafoAdjacencia(0);
-
-    //     grafo.adicionarVertice("A");
-    //     grafo.adicionarVertice("B");
-    //     grafo.adicionarVertice("C");
-    //     grafo.adicionarVertice("D");
-    //     grafo.adicionarVertice("E");
-    //     grafo.adicionarVertice("F");
-
-    //     grafo.adicionarAresta("A", "B", 2);
-    //     grafo.adicionarAresta("A", "C", 4);
-    //     grafo.adicionarAresta("B", "C", 1);
-    //     grafo.adicionarAresta("B", "D", 7);
-    //     grafo.adicionarAresta("C", "E", 3);
-    //     grafo.adicionarAresta("D", "E", 1);
-    //     grafo.adicionarAresta("D", "F", 5);
-    //     grafo.adicionarAresta("E", "F", 7);
-
-    //     int origem = 0; // Vértice A como origem
-    //     int destino = 5; // Vértice F como destino
-
-    //     caminhoMinimo(grafo, origem, destino);
-    // }
 }

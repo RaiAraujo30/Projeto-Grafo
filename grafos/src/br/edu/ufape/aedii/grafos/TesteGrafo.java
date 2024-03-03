@@ -7,7 +7,7 @@ import java.io.IOException;
 public class TesteGrafo {
     public static void main(String[] args) {
         try {
-            Path arquivo = Paths.get("D:/Programação/Java/Grafos-Igor/grafos/src/br/edu/ufape/aedii/grafos/teste.txt");
+            Path arquivo = Paths.get("D:/Programação/Java/Grafos-Igor/grafos/src/br/edu/ufape/aedii/grafos/Dados.txt");
 
             List<String> linhas = Files.readAllLines(arquivo);
 
@@ -18,7 +18,7 @@ public class TesteGrafo {
             int qtdVertices = Integer.parseInt(partes[0]);
 
             // Pode dar erro na quantidade de vértices, se der, trocar por 0
-            GrafoAdjacencia g = new GrafoAdjacencia(qtdVertices);
+            GrafoAdjacencia g = new GrafoAdjacencia(0);
 
             for (int i = 1; i < linhas.size(); i++) {
                 String linha = linhas.get(i);
@@ -46,9 +46,9 @@ public class TesteGrafo {
                     }
                 }
             }
-
+            g.imprimir();
             int origem = g.getIndiceVertice("A");; // Vértice A como origem
-            int destino = g.getIndiceVertice("F"); // Vértice F como destino
+            int destino = g.getIndiceVertice("CASA"); // Vértice F como destino
 
             Dijkstra.caminhoMinimo(g, origem, destino);
         } catch (IOException e) {
@@ -56,33 +56,3 @@ public class TesteGrafo {
         }
     }
 }
-
-// package br.edu.ufape.aedii.grafos;
-
-// public class TesteGrafo {
-// 	public static void main(String[] args) {
-//         // Exemplo de uso
-//         GrafoAdjacencia grafo = new GrafoAdjacencia(0);
-
-//         grafo.adicionarVertice("A");
-//         grafo.adicionarVertice("B");
-//         grafo.adicionarVertice("C");
-//         grafo.adicionarVertice("D");
-//         grafo.adicionarVertice("E");
-//         grafo.adicionarVertice("F");
-
-//         grafo.adicionarAresta("A", "B", 2);
-//         grafo.adicionarAresta("A", "C", 4);
-//         grafo.adicionarAresta("B", "C", 1);
-//         grafo.adicionarAresta("B", "D", 7);
-//         grafo.adicionarAresta("C", "E", 3);
-//         grafo.adicionarAresta("D", "E", 1);
-//         grafo.adicionarAresta("D", "F", 5);
-//         grafo.adicionarAresta("E", "F", 7);
-
-        // int origem = 0; // Vértice A como origem
-        // int destino = 5; // Vértice F como destino
-
-        // Dijkstra.caminhoMinimo(grafo, origem, destino);
-//     }
-// }
