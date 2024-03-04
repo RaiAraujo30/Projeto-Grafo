@@ -28,6 +28,7 @@ public class GrafoAdjacencia implements Grafo{
         this.numeroVertices++;
 	}
 	
+    
 	@Override
 	public int getIndiceVertice(String v) {
 		return this.mapa.indexOf(v);
